@@ -43,17 +43,53 @@ public class EmpleadoEj13 {
         this.estaCasado = estaCasado;
         this.numHijos = numHijos;
     }
+//Cálculo del complemento correspondiente a las horas extra realizadas. El valor es devuelto por el método.
 
     public double calculoComplementoHorasExtrasRealizadas() {
         double resultadoCalculo = 0.0;
         resultadoCalculo = this.horasExtrasRealizadas * this.pagoHoraExtra;
         return resultadoCalculo;
     }
+//Cálculo del sueldo bruto. El valor es devuelto por el método. El sueldo bruto es el resultado del sueldo base más el complemento por las horas extra trabajadas en el mes.
 
     public double calculoSueldoBruto(double calculoComplementohorasExtras) {
         double resultadoCalculo = 0.0;
-        resultadoCalculo = this.sueldoBase +calculoComplementohorasExtras;
+        resultadoCalculo = this.sueldoBase + calculoComplementohorasExtras;
         return resultadoCalculo;
+    }
+
+    public double calculoRetencionIrpf() {
+        double resultadoCalculo = 0;
+
+        this.tipoIrpf = this.tipoIrpf - this.numHijos;
+        if (this.estaCasado) {
+            this.tipoIrpf = this.tipoIrpf - 2;
+        }
+        resultadoCalculo = (this.sueldoBase * this.tipoIrpf) / 100;
+
+        return resultadoCalculo;
+    }
+
+    public double calculoSueldoNeto() {
+        double resultadoCalculo = 0;
+
+        resultadoCalculo = this.sueldoBase - calculoRetencionIrpf();
+        return resultadoCalculo;
+    }
+
+    public void escribirBasicInfo() {
+        System.out.println("Nombre: " + this.nombre + "\nApellido: " + this.apellidos
+                + "\nNif: " + this.Nif + "\nCasado: " + estaCasadoSiNo() + "\nnumero hijos: " + this.numHijos);
+    }
+
+    public void escribirAllInfo() {
+        System.out.println("Nombre: " + this.nombre + "\nApellido: " + this.apellidos
+                + "\nNif: " + this.Nif + "\nCasado: " + estaCasadoSiNo() + "\nnumero hijos: " + this.numHijos
+                + "\nsueldo base: " + this.sueldoBase + "\ncomplemento extra: " + calculoComplementoHorasExtrasRealizadas()
+                + "\nsueldo Bruto: " + calculoSueldoBruto(calculoComplementoHorasExtrasRealizadas())
+                + "\nretencion IRPF: " + calculoRetencionIrpf()
+                + "\nsueldo neto: " + calculoSueldoNeto()
+        );
     }
 
     public String getNombre() {
@@ -128,15 +164,19 @@ public class EmpleadoEj13 {
         this.numHijos = numHijos;
     }
 
-    @Override
-    public String toString() {
-        String casado = "";
-        if (this.isEstaCasado()) {
+    public String estaCasadoSiNo(){
+         String casado = "";
+        if (this.estaCasado) {
             casado = "si";
         } else {
             casado = "no";
         }
-        return "Empleado{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", Nif=" + Nif + ", sueldoBase=" + sueldoBase + ", pagoHoraExtra=" + pagoHoraExtra + ", horasExtrasRealizadas=" + horasExtrasRealizadas + ", tipoIrpf=" + tipoIrpf + ", estaCasado=" + casado + ", numHijos=" + numHijos + '}';
+        return casado;
+    }
+    @Override
+    public String toString() {
+      
+        return "Empleado{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", Nif=" + Nif + ", sueldoBase=" + sueldoBase + ", pagoHoraExtra=" + pagoHoraExtra + ", horasExtrasRealizadas=" + horasExtrasRealizadas + ", tipoIrpf=" + tipoIrpf + ", estaCasado=" + estaCasadoSiNo() + ", numHijos=" + numHijos + '}';
     }
 
 }
