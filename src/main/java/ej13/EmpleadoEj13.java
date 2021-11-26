@@ -52,20 +52,20 @@ public class EmpleadoEj13 {
     }
 //Cálculo del sueldo bruto. El valor es devuelto por el método. El sueldo bruto es el resultado del sueldo base más el complemento por las horas extra trabajadas en el mes.
 
-    public double calculoSueldoBruto(double calculoComplementohorasExtras) {
+    public double calculoSueldoBruto() {
         double resultadoCalculo = 0.0;
-        resultadoCalculo = this.sueldoBase + calculoComplementohorasExtras;
+        resultadoCalculo = this.sueldoBase + calculoComplementoHorasExtrasRealizadas();
         return resultadoCalculo;
     }
 
     public double calculoRetencionIrpf() {
         double resultadoCalculo = 0;
-
-        this.tipoIrpf = this.tipoIrpf - this.numHijos;
+        double calculoIrpf;
+        calculoIrpf = this.tipoIrpf - this.numHijos;
         if (this.estaCasado) {
-            this.tipoIrpf = this.tipoIrpf - 2;
+            calculoIrpf = calculoIrpf - 2;
         }
-        resultadoCalculo = (this.sueldoBase * this.tipoIrpf) / 100;
+        resultadoCalculo = (calculoSueldoBruto() * calculoIrpf) / 100;
 
         return resultadoCalculo;
     }
@@ -73,20 +73,28 @@ public class EmpleadoEj13 {
     public double calculoSueldoNeto() {
         double resultadoCalculo = 0;
 
-        resultadoCalculo = this.sueldoBase - calculoRetencionIrpf();
+        resultadoCalculo = calculoSueldoBruto() - calculoRetencionIrpf();
         return resultadoCalculo;
     }
 
     public void escribirBasicInfo() {
-        System.out.println("Nombre: " + this.nombre + "\nApellido: " + this.apellidos
-                + "\nNif: " + this.Nif + "\nCasado: " + estaCasadoSiNo() + "\nnumero hijos: " + this.numHijos);
+        System.out.println("Nombre: " + this.nombre + ""
+                + "\nApellido: " + this.apellidos
+                + "\nNif: " + this.Nif
+                + "\nCasado: " + estaCasadoSiNo()
+                + "\nnumero hijos: " + this.numHijos);
     }
 
     public void escribirAllInfo() {
-        System.out.println("Nombre: " + this.nombre + "\nApellido: " + this.apellidos
-                + "\nNif: " + this.Nif + "\nCasado: " + estaCasadoSiNo() + "\nnumero hijos: " + this.numHijos
-                + "\nsueldo base: " + this.sueldoBase + "\ncomplemento extra: " + calculoComplementoHorasExtrasRealizadas()
-                + "\nsueldo Bruto: " + calculoSueldoBruto(calculoComplementoHorasExtrasRealizadas())
+        System.out.println(
+                "Nombre: " + this.nombre
+                + "\nApellido: " + this.apellidos
+                + "\nNif: " + this.Nif
+                + "\nestado: " + estaCasadoSiNo()
+                + "\nnumero hijos: " + this.numHijos
+                + "\nsueldo base: " + this.sueldoBase
+                + "\ncomplemento extra: " + calculoComplementoHorasExtrasRealizadas()
+                + "\nsueldo Bruto: " + calculoSueldoBruto()
                 + "\nretencion IRPF: " + calculoRetencionIrpf()
                 + "\nsueldo neto: " + calculoSueldoNeto()
         );
@@ -164,19 +172,20 @@ public class EmpleadoEj13 {
         this.numHijos = numHijos;
     }
 
-    public String estaCasadoSiNo(){
-         String casado = "";
+    public String estaCasadoSiNo() {
+        String casado = "";
         if (this.estaCasado) {
-            casado = "si";
+            casado = "casado";
         } else {
-            casado = "no";
+            casado = "soltero ";
         }
         return casado;
     }
+
     @Override
     public String toString() {
-      
-        return "Empleado{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", Nif=" + Nif + ", sueldoBase=" + sueldoBase + ", pagoHoraExtra=" + pagoHoraExtra + ", horasExtrasRealizadas=" + horasExtrasRealizadas + ", tipoIrpf=" + tipoIrpf + ", estaCasado=" + estaCasadoSiNo() + ", numHijos=" + numHijos + '}';
+
+        return "Empleado{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", Nif=" + Nif + ", sueldoBase=" + sueldoBase + ", pagoHoraExtra=" + pagoHoraExtra + ", horasExtrasRealizadas=" + horasExtrasRealizadas + ", tipoIrpf=" + tipoIrpf + ", estado=" + estaCasadoSiNo() + ", numHijos=" + numHijos + '}';
     }
 
 }
