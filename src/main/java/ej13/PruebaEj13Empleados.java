@@ -19,7 +19,7 @@ public class PruebaEj13Empleados {
 //        System.out.println(prueba1.toString());
 //        System.out.println("El complemento por las horas que ha realizado " + prueba1.getNombre() + " es de: "
 //                + prueba1.calculoComplementoHorasExtrasRealizadas() + "€");
-        EmpleadoEj13 prueba2 = new EmpleadoEj13("Jose", "Jimenez", "1284392S", 1800, 18.2, 20, 12, true, 2);
+        EmpleadoEj13 prueba2 = new EmpleadoEj13("Jose", "Jimenez", "1284392S", 1800, 15, 20, 12, true, 2);
 
         System.out.println("-----------------------Informacion extendida------------------");
         prueba2.escribirAllInfo();

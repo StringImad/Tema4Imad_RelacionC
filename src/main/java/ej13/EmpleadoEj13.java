@@ -38,43 +38,44 @@ public class EmpleadoEj13 {
         this.Nif = Nif;
         this.sueldoBase = sueldoBase;
         this.pagoHoraExtra = pagoHoraExtra;
+
+        if (pagoHoraExtra > 9 && pagoHoraExtra < 26) {
+            this.pagoHoraExtra = tipoIrpf;
+        } else {
+            throw new IllegalArgumentException("Fuera de rango");
+        }
         this.horasExtrasRealizadas = horasExtrasRealizadas;
-        this.tipoIrpf = tipoIrpf;
+        if (tipoIrpf > 0 && tipoIrpf < 21) {
+            this.tipoIrpf = tipoIrpf;
+        } else {
+            this.tipoIrpf = 10;
+        }
         this.estaCasado = estaCasado;
         this.numHijos = numHijos;
     }
 //Cálculo del complemento correspondiente a las horas extra realizadas. El valor es devuelto por el método.
 
     public double calculoComplementoHorasExtrasRealizadas() {
-        double resultadoCalculo = 0.0;
-        resultadoCalculo = this.horasExtrasRealizadas * this.pagoHoraExtra;
-        return resultadoCalculo;
+        return (this.horasExtrasRealizadas * this.pagoHoraExtra);
     }
 //Cálculo del sueldo bruto. El valor es devuelto por el método. El sueldo bruto es el resultado del sueldo base más el complemento por las horas extra trabajadas en el mes.
 
     public double calculoSueldoBruto() {
-        double resultadoCalculo = 0.0;
-        resultadoCalculo = this.sueldoBase + calculoComplementoHorasExtrasRealizadas();
-        return resultadoCalculo;
+        return (this.sueldoBase + calculoComplementoHorasExtrasRealizadas());
     }
 
     public double calculoRetencionIrpf() {
-        double resultadoCalculo = 0;
         double calculoIrpf;
         calculoIrpf = this.tipoIrpf - this.numHijos;
         if (this.estaCasado) {
             calculoIrpf = calculoIrpf - 2;
         }
-        resultadoCalculo = (calculoSueldoBruto() * calculoIrpf) / 100;
-
-        return resultadoCalculo;
+        return ((calculoSueldoBruto() * calculoIrpf) / 100);
     }
 
     public double calculoSueldoNeto() {
-        double resultadoCalculo = 0;
 
-        resultadoCalculo = calculoSueldoBruto() - calculoRetencionIrpf();
-        return resultadoCalculo;
+        return (calculoSueldoBruto() - calculoRetencionIrpf());
     }
 
     public void escribirBasicInfo() {
@@ -137,7 +138,11 @@ public class EmpleadoEj13 {
     }
 
     public void setPagoHoraExtra(double pagoHoraExtra) {
-        this.pagoHoraExtra = pagoHoraExtra;
+        if (pagoHoraExtra > 9 && pagoHoraExtra < 26) {
+            this.pagoHoraExtra = tipoIrpf;
+        } else {
+            throw new IllegalArgumentException("Fuera de rango");
+        }
     }
 
     public int getHorasExtrasRealizadas() {
@@ -153,7 +158,11 @@ public class EmpleadoEj13 {
     }
 
     public void setTipoIrpf(double tipoIrpf) {
-        this.tipoIrpf = tipoIrpf;
+        if (tipoIrpf > 9 && tipoIrpf < 21) {
+            this.tipoIrpf = tipoIrpf;
+        } else {
+            this.tipoIrpf = 10;
+        }
     }
 
     public boolean isEstaCasado() {
