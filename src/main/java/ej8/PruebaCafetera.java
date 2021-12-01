@@ -17,8 +17,20 @@ public class PruebaCafetera {
         System.out.println("----Agregando 200ml de Cafe ------");
         prueba.agregarCafe(200);
         System.out.println(prueba.toString());
-   System.out.println("----Agregando 200ml de Cafe ------");
-
+        System.out.println("----Vaciando la maquina de Cafe ------");
         prueba.vaciarCafetera();
+        System.out.println(prueba.toString());
+        System.out.println("----------Llenando la cafetera------");
+        prueba.llenarCafetera();
+        System.out.println(prueba.toString());
+
+        System.out.println("------Sirviendo 800 ml de cafe");
+        prueba.servirTaza(800);
+        System.out.println(prueba.toString());
+
+        System.out.println("------Sirviendo lo que queda de cafe");
+        System.out.println("Hemos servido una cantidad de: "+prueba.servirTaza(550));
+        System.out.println(prueba.toString());
+
     }
 }

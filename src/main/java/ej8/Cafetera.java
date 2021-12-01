@@ -21,18 +21,26 @@ public class Cafetera {
 
 //Constructor, que recibe sólo la capacidad máxima de la cafetera; inicializa la cantidad actual de café igual a la capacidad máxima (cafetera llen
     public Cafetera(int capacidadMaxima) {
-        this.cantidadActual = capacidadMaxima;
+        if (capacidadMaxima >= 0) {
+            this.cantidadActual = capacidadMaxima;
+        }
+        this.cantidadActual = 1000;
+
     }
 //Constructor, que recibe la capacidad máxima y la cantidad actual. Si la cantidad actual que se pasa es mayor que la capacidad máxima de la cafetera, 
 //se ajustará la cantidad actual a la capacidad máxima.
 
     public Cafetera(int capacidadMaxima, int cantidadActual) {
-        this.cantidadActual = cantidadActual;
-
-        if (cantidadActual > capacidadMaxima) {
-            this.cantidadActual = capacidadMaxima;
+        this.capacidadMaxima = 1000;
+        if (capacidadMaxima >= 0) {
+            this.capacidadMaxima = capacidadMaxima;
         }
-        this.capacidadMaxima = capacidadMaxima;
+        if (cantidadActual >= 0 && cantidadActual < capacidadMaxima) {
+            this.cantidadActual = cantidadActual;
+        } else {
+            this.cantidadActual = this.capacidadMaxima;
+        }
+
     }
 //llenarCafetera(): hace que la cantidad actual sea igual a la capacidad.
 
@@ -46,8 +54,12 @@ public class Cafetera {
         double cantidadServida = 0.0;
         if (cantidadAServir > this.cantidadActual) {
             cantidadServida = this.cantidadActual;
+
+            vaciarCafetera();
+        } else {
+            this.cantidadActual -= cantidadAServir;
+
         }
-        this.cantidadActual -= cantidadServida;
         return cantidadServida;
     }
 //vaciarCafetera(): pone la cantidad de café actual en cero.
@@ -71,16 +83,8 @@ public class Cafetera {
         return capacidadMaxima;
     }
 
-    public void setCapacidadMaxima(int capacidadMaxima) {
-        this.capacidadMaxima = capacidadMaxima;
-    }
-
     public int getCantidadActual() {
         return cantidadActual;
-    }
-
-    public void setCantidadActual(int cantidadActual) {
-        this.cantidadActual = cantidadActual;
     }
 
     @Override
