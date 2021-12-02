@@ -40,7 +40,7 @@ public class CuentaBancaria {
     }
 
     public void ingresarIntereses() {
-        this.saldoActual += (interesAnual * saldoActual)/100;
+        this.saldoActual += (interesAnual * saldoActual) / 100;
     }
 
     public void ingresarDinero(double cantidad) {
@@ -49,9 +49,7 @@ public class CuentaBancaria {
     }
 
     public void retirarEfectivo(double cantidad) {
-        if (cantidad > saldoActual) {
-            System.out.println("Saldo insuficiente");
-        } else {
+        if (cantidad < saldoActual) {
             this.saldoActual = saldoActual - cantidad;
         }
 

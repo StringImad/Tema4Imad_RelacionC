@@ -12,7 +12,6 @@ public class PruebaCuentaBancaria {
 
     public static void main(String[] args) {
         CuentaBancaria prueba = new CuentaBancaria();
-
         System.out.println(prueba);
         System.out.println("-----Intentamos cambiar el interes a 4-----");
         prueba.setInteresAnual(4);
@@ -25,5 +24,6 @@ public class PruebaCuentaBancaria {
         System.out.println("Calculamos el interes");
         prueba.ingresarIntereses();
         System.out.println(prueba);    
+        
     }
 }
