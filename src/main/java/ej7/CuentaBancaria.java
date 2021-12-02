@@ -44,8 +44,10 @@ public class CuentaBancaria {
     }
 
     public void ingresarDinero(double cantidad) {
+        if (cantidad > 0) {
+            this.saldoActual = saldoActual + cantidad;
 
-        this.saldoActual = saldoActual + cantidad;
+        }
     }
 
     public void retirarEfectivo(double cantidad) {
