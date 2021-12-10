@@ -26,7 +26,8 @@ public class Linea {
     }
 
     public void moverDerecha(double x) {
-        this.puntoA.setCoordenadaX(x);
+        double suma = this.puntoA.getCoordenadaX() + x;
+        this.puntoA.setCoordenadaX(suma);
     }
 
     public void moverIzquierda(double x) {
