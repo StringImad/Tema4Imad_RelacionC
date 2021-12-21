@@ -33,19 +33,19 @@ public class Linea {
     public void moverIzquierda(double x) {
         double suma = this.puntoA.getCoordenadaX() + (x);
 
-        this.puntoA.setCoordenadaY(x);
+        this.puntoA.setCoordenadaY(suma);
     }
 
     public void moverArriba(double y) {
         double suma = this.puntoA.getCoordenadaX() + (y);
 
-        this.puntoB.setCoordenadaX(y);
+        this.puntoB.setCoordenadaX(suma);
     }
 
     public void moverAbajo(double y) {
         double suma = this.puntoA.getCoordenadaX() + (y);
 
-        this.puntoB.setCoordenadaX(y);
+        this.puntoB.setCoordenadaX(suma);
     }
 
     public PuntoGeometrico getPuntoA() {
