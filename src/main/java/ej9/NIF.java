@@ -44,10 +44,6 @@ public class NIF {
         return contadorDeInstancias;
     }
 
-    public void setContadorDeInstancias(int contadorDeInstancias) {
-        this.contadorDeInstancias = contadorDeInstancias;
-    }
- 
     @Override
     public String toString() {
         return "NIF{" + numeroDNI + "-" + letraDNI + '}';
