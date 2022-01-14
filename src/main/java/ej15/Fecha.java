@@ -4,6 +4,7 @@
  */
 package ej15;
 
+import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
@@ -37,9 +38,7 @@ public class Fecha {
             this.anyo = anyo;
 
         } else {
-            this.dia = 1;
-            this.mes = 1;
-            this.anyo = 2022;
+           throw new IllegalArgumentException();
         }
 
     }
@@ -50,7 +49,7 @@ public class Fecha {
         boolean fechaComprobada = true;
         try {
             LocalDate.of(anyo, mes, dia);
-        } catch (IllegalArgumentException IAE) {
+        } catch (DateTimeException DTE) {
             fechaComprobada = false;
         }
         return fechaComprobada;
@@ -61,9 +60,8 @@ public class Fecha {
     }
 
     public void setDia(int dia) {
-        if (dia < 31 || dia >= 1) {
+       if(comprobarFecha(dia, mes, anyo)){
             this.dia = dia;
-
         }
     }
 
@@ -72,11 +70,9 @@ public class Fecha {
     }
 
     public void setMes(int mes) {
-        if (mes < 12 || mes >= 1) {
+        if(comprobarFecha(dia, mes, anyo)){
             this.mes = mes;
-
         }
-
     }
 
     public int getAnyo() {
@@ -84,9 +80,8 @@ public class Fecha {
     }
 
     public void setAnyo(int anyo) {
-        if (anyo >= 1) {
+      if(comprobarFecha(dia, mes, anyo)){
             this.anyo = anyo;
-
         }
     }
     //indicará si el año almacenado es bisiesto o no
