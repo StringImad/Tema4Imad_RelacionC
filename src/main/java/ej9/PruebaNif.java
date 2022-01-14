@@ -11,7 +11,7 @@ package ej9;
 public class PruebaNif {
 
     public static void main(String[] args) {
-        NIF prueba1 = new NIF("79428882");
+        NIF prueba1 = new NIF("77660521");
         NIF prueba2 = new NIF("794288872");
         
         System.out.println(prueba1);

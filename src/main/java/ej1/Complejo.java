@@ -38,6 +38,22 @@ public class Complejo {
     public void setParteImaginariab(double parteImaginariab) {
         this.parteImaginariab = parteImaginariab;
     }
+    public static double sumar(){
+        double suma = 0;
+        return suma;
+    }
+ public static double resta(){
+        double suma = 0;
+        return suma;
+    }
+ public static double multiplicacion(){
+        double suma = 0;
+        return suma;
+    }
+ public static double division(){
+        double suma = 0;
+        return suma;
+    }
 
     @Override
     public String toString() {
