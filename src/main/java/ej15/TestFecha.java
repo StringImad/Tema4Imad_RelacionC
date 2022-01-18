@@ -25,7 +25,7 @@ public class TestFecha {
         System.out.println("la fecha anterior al nacimiento de imad era: ");
         imad.anterior();
 
-         imad.diaSemana();
+        imad.diaSemana();
         System.out.println("------------Introduce los datos de pepe---------------");
         Fecha pepe = new Fecha(UtilidadesFechas.leerDia(), UtilidadesFechas.leerMes(), UtilidadesFechas.leerAnyo());
         if (pepe.bisiesto()) {
@@ -33,9 +33,9 @@ public class TestFecha {
         } else {
             System.out.println("No es bisiesto");
         }
-        System.out.println("------------Introduce los datos de juan---------------");
-        Fecha juan = new Fecha(UtilidadesFechas.leerDia(), UtilidadesFechas.leerMes(), UtilidadesFechas.leerAnyo());
-        juan.mostrarFechaLarga();
+//        System.out.println("------------Introduce los datos de juan---------------");
+//        Fecha juan = new Fecha(UtilidadesFechas.leerDia(), UtilidadesFechas.leerMes(), UtilidadesFechas.leerAnyo());
+//        juan.mostrarFechaLarga();
         LocalDate imadCopia = imad.copia();
         LocalDate pepeCopia = pepe.copia();
         

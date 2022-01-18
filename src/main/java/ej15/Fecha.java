@@ -9,6 +9,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 /**
  *
@@ -37,7 +38,7 @@ public class Fecha {
             this.anyo = anyo;
 
         } else {
-           throw new IllegalArgumentException();
+            throw new IllegalArgumentException();
         }
 
     }
@@ -59,7 +60,7 @@ public class Fecha {
     }
 
     public void setDia(int dia) {
-       if(comprobarFecha(dia, mes, anyo)){
+        if (comprobarFecha(dia, mes, anyo)) {
             this.dia = dia;
         }
     }
@@ -69,7 +70,7 @@ public class Fecha {
     }
 
     public void setMes(int mes) {
-        if(comprobarFecha(dia, mes, anyo)){
+        if (comprobarFecha(dia, mes, anyo)) {
             this.mes = mes;
         }
     }
@@ -79,7 +80,7 @@ public class Fecha {
     }
 
     public void setAnyo(int anyo) {
-      if(comprobarFecha(dia, mes, anyo)){
+        if (comprobarFecha(dia, mes, anyo)) {
             this.anyo = anyo;
         }
     }
@@ -119,21 +120,26 @@ public class Fecha {
         return hoy.getDayOfWeek().getValue();
     }
 
-    public static int diasEntreFechas(LocalDate inicial, LocalDate fechaFinal) {
-        Period tiempoEntreFechas = Period.between(inicial, fechaFinal);
+    public static long diasEntreFechas(LocalDate inicial, LocalDate fechaFinal) {
 
-        return tiempoEntreFechas.getDays();
+        long diferenciaDias = ChronoUnit.DAYS.between(inicial, fechaFinal);
+        return diferenciaDias;
     }
 
     public void siguiente() {
         LocalDate hoy = LocalDate.of(anyo, mes, dia);
-        hoy.plusDays(1);
+        LocalDate sig = hoy.plusDays(1);
+        anyo = sig.getYear();
+        mes = sig.getMonthValue();
+        anyo = sig.getYear();
     }
 
     public void anterior() {
-        LocalDate hoy = LocalDate.of(anyo,mes,dia);
-       // hoy.minusDays(1);
-        System.out.println(hoy.minusDays(1));
+       LocalDate hoy = LocalDate.of(anyo, mes, dia);
+        LocalDate ant = hoy.minusDays(1);
+        anyo = ant.getYear();
+        mes = ant.getMonthValue();
+        anyo = ant.getYear();
     }
 
     public LocalDate copia() {
@@ -162,8 +168,7 @@ public class Fecha {
 
     @Override
     public String toString() {
-        return "Fecha{" +  dia + "/" + mes + "/" + anyo + '}';
+        return "Fecha{" + dia + "/" + mes + "/" + anyo + '}';
     }
-    
-    
+
 }
