@@ -16,28 +16,26 @@ public class TestFecha {
     public static void main(String[] args) {
         int dia, mes, anyo;
         System.out.println("------------Introduce los datos de imad---------------");
-
         dia = UtilidadesFechas.leerDia();
         mes = UtilidadesFechas.leerMes();
         anyo = UtilidadesFechas.leerAnyo();
-
         Fecha imad = new Fecha(dia, mes, anyo);
         System.out.println("la fecha anterior al nacimiento de imad era: ");
         imad.anterior();
         System.out.println("------------Introduce los datos de pepe---------------");
         Fecha pepe = new Fecha(UtilidadesFechas.leerDia(), UtilidadesFechas.leerMes(), UtilidadesFechas.leerAnyo());
-
-        // pepe.bisiesto();
         if (pepe.bisiesto()) {
             System.out.println("El año de nacimiento de pepe es bisiesto");
         } else {
             System.out.println("No es bisiesto");
         }
         System.out.println("------------Introduce los datos de juan---------------");
-
         Fecha juan = new Fecha(UtilidadesFechas.leerDia(), UtilidadesFechas.leerMes(), UtilidadesFechas.leerAnyo());
-
         juan.mostrarFechaLarga();
+        LocalDate imadCopia = imad.copia();
+        LocalDate pepeCopia = pepe.copia();
+        
+        System.out.println("Entre la fecha de imad y pepe han pasado: "+Fecha.diasEntreFechas(imadCopia, pepeCopia)+ " dias");
 
     }
 }
