@@ -24,9 +24,8 @@ public class TestFecha {
 //        Fecha pepe = new Fecha(UtilidadesFechas.leerDia(), UtilidadesFechas.leerMes(), UtilidadesFechas.leerAnyo());
 //
 //        Fecha juan = new Fecha(UtilidadesFechas.leerDia(), UtilidadesFechas.leerMes(), UtilidadesFechas.leerAnyo());
+        imad.anterior();
+       // System.out.println(imad);
 
-        imad.anterior(imad);
-        System.out.println(imad);
-        
     }
 }

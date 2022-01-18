@@ -7,7 +7,6 @@ package ej15;
 import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
@@ -131,9 +130,10 @@ public class Fecha {
         hoy.plusDays(1);
     }
 
-    public void anterior(Fecha object) {
-        LocalDate hoy = LocalDate.of(object.dia, object.mes, object.anyo);
-        hoy.minusDays(1);
+    public void anterior() {
+        LocalDate hoy = LocalDate.of(anyo,mes,dia);
+       // hoy.minusDays(1);
+        System.out.println(hoy.minusDays(1));
     }
 
     public LocalDate copia() {
