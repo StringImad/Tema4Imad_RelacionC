@@ -20,8 +20,12 @@ public class TestFecha {
         mes = UtilidadesFechas.leerMes();
         anyo = UtilidadesFechas.leerAnyo();
         Fecha imad = new Fecha(dia, mes, anyo);
+        System.out.println("dia de la semana es " + imad.diaSemana());
+
         System.out.println("la fecha anterior al nacimiento de imad era: ");
         imad.anterior();
+
+         imad.diaSemana();
         System.out.println("------------Introduce los datos de pepe---------------");
         Fecha pepe = new Fecha(UtilidadesFechas.leerDia(), UtilidadesFechas.leerMes(), UtilidadesFechas.leerAnyo());
         if (pepe.bisiesto()) {
@@ -36,6 +40,5 @@ public class TestFecha {
         LocalDate pepeCopia = pepe.copia();
         
         System.out.println("Entre la fecha de imad y pepe han pasado: "+Fecha.diasEntreFechas(imadCopia, pepeCopia)+ " dias");
-
     }
 }

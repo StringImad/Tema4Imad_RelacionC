@@ -114,9 +114,9 @@ public class Fecha {
         System.out.println("Fecha Larga: " + fechaString);
     }
 
-    public DayOfWeek diaSemana() {
+    public int diaSemana() {
         LocalDate hoy = LocalDate.of(anyo, mes, dia);
-        return hoy.getDayOfWeek();
+        return hoy.getDayOfWeek().getValue();
     }
 
     public static int diasEntreFechas(LocalDate inicial, LocalDate fechaFinal) {
