@@ -131,8 +131,8 @@ public class Fecha {
         hoy.plusDays(1);
     }
 
-    public void anterior() {
-        LocalDate hoy = LocalDate.of(anyo, mes, dia);
+    public void anterior(Fecha object) {
+        LocalDate hoy = LocalDate.of(object.dia, object.mes, object.anyo);
         hoy.minusDays(1);
     }
 
@@ -159,4 +159,11 @@ public class Fecha {
         return hoy.isAfter(fecha);
 
     }
+
+    @Override
+    public String toString() {
+        return "Fecha{" +  dia + "/" + mes + "/" + anyo + '}';
+    }
+    
+    
 }
