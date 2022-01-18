@@ -108,10 +108,10 @@ public class Fecha {
     public void mostrarFechaLarga() {
         LocalDate hoy = LocalDate.of(anyo, mes, dia);
 
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy");
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("EEEE 'de' dd MMMM 'de' yyyy");
         String fechaString = hoy.format(formato);
 
-        System.out.println("Fecha corta " + fechaString);
+        System.out.println("Fecha Larga: " + fechaString);
     }
 
     public DayOfWeek diaSemana() {
